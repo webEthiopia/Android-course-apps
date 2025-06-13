@@ -14,7 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    private CheckBox checkBox1 , checkBox2 , checkBox3;
+    private CheckBox check1,check2 ,check3;
     private Button button_sel;
 
     @Override
@@ -28,32 +28,73 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         addListenerOnButton();
+        addListenerToCheckBox();
     }
 
-    public void addListenerOnButton(){
-        checkBox1 = (CheckBox) findViewById(R.id.checkBox_dog);
-        checkBox2 = (CheckBox) findViewById(R.id.checkBox_cat);
-        checkBox3 = (CheckBox) findViewById(R.id.checkBox_cow);
-        button_sel = (Button) findViewById(R.id.button);
+
+
+    public void addListenerToCheckBox() {
+        check1 = (CheckBox)findViewById(R.id.checkBox_dog);
+        check1.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(((CheckBox)v).isChecked()) {
+                            Toast.makeText(MainActivity.this,
+                                    "Dog is selected",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
+        check2 = (CheckBox)findViewById(R.id.checkBox_cat);
+        check2.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(((CheckBox)v).isChecked()) {
+                            Toast.makeText(MainActivity.this,
+                                    "Cat is selected",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
+        check3 = (CheckBox)findViewById(R.id.checkBox_cow);
+        check3.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(((CheckBox)v).isChecked()) {
+                            Toast.makeText(MainActivity.this,
+                                    "Cow is selected",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                }
+        );
+    }
+
+    public void addListenerOnButton() {
+        check1 = (CheckBox)findViewById(R.id.checkBox_dog);
+        check2 = (CheckBox)findViewById(R.id.checkBox_cat);
+        check3 = (CheckBox)findViewById(R.id.checkBox_cow);
+        button_sel = (Button)findViewById(R.id.button);
 
         button_sel.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         StringBuffer result = new StringBuffer();
-                        result.append("Let's see what you like. ");
-                        result.append("Dog : ").append(checkBox1.isChecked()).append(' ');
-                        result.append(" Cat : ").append(checkBox2.isChecked()).append(' ');
-                        result.append(" Cow : ").append(checkBox3.isChecked());
+                        result.append("Dog : ").append(check1.isChecked()).append(' ');
+                        result.append(" Cat : ").append(check2.isChecked()).append(' ');
+                        result.append(" Cow : ").append(check3.isChecked());
 
-                        Toast.makeText(MainActivity.this,result.toString(),Toast.LENGTH_LONG).show();
-                 }
+                        Toast.makeText(MainActivity.this,result.toString(),
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
 
-
         );
-    }
 
+    }
 
 
 }
