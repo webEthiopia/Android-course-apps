@@ -9,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btn_stpd; // time picker button
     private Button btn_sdpd; // date picker button
 
     @Override
@@ -17,24 +16,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn_stpd = findViewById(R.id.button);
         btn_sdpd = findViewById(R.id.button_date);
 
-        // Time picker button listener (classic anonymous class)
-        btn_stpd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TimePickerFragment timePicker = new TimePickerFragment();
-                timePicker.setListener(new TimePickerFragment.TimeSelectedListener() {
-                    @Override
-                    public void onTimeSelected(int hour, int minute) {
-                        String time = String.format("%02d:%02d", hour, minute);
-                        Toast.makeText(MainActivity.this, "Selected time: " + time, Toast.LENGTH_SHORT).show();
-                    }
-                });
-                timePicker.show(getSupportFragmentManager(), "timePicker");
-            }
-        });
+       
 
         // Date picker button listener (classic anonymous class)
         btn_sdpd.setOnClickListener(new View.OnClickListener() {
